@@ -5,7 +5,7 @@ const cors = require("cors");
 class Server {
   constructor() {
     this.app = express();
-    this.port = 3000;
+    this.port = 80;
     this.middleware();
     this.router();
   }
