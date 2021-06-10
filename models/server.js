@@ -1,5 +1,7 @@
 const express = require("express");
 
+const fileUpload = require("express-fileupload"); //Subir archivo
+
 const cors = require("cors");
 
 const connection = require("../database/config");
@@ -27,6 +29,17 @@ class Server {
 
     //Es un middleware que permite hacer publica una carpeta
     this.app.use(express.static("public"));
+
+    //Fileupload - Carga de archivos
+    // Note that this option available for versions 1.0.0 and newer.
+    // createParentPath:true; si no existe la carpeta de destino crea la carpeta
+    this.app.use(
+      fileUpload({
+        useTempFiles: true,
+        tempFileDir: "/tmp/",
+        createParentPath: true,
+      })
+    );
   }
 
   router() {

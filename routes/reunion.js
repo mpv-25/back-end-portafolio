@@ -5,8 +5,15 @@ const { check } = require("express-validator");
 const router = Router();
 
 const { validarCampos } = require("../middlewares/validar-campos");
+const validarUsuario = require("../middlewares/validar-usuario");
 
-const { crearReunion, editReunion } = require("../controllers/reunion");
+const {
+  crearReunion,
+  editReunion,
+  getReunion,
+} = require("../controllers/reunion");
+
+router.get("/", [validarUsuario], getReunion);
 
 router.post(
   "/",

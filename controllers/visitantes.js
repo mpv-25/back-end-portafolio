@@ -18,12 +18,10 @@ const getVisitantes = async (req = request, res = response) => {
 };
 
 const crearVisitante = async (req = request, res = response) => {
-  let { correo, nombre, img } = req.body;
-
   try {
+    let { correo, nombre, img } = req.body;
     let visitante = await Visitante.findOne({ correo });
     let resp;
-
     if (!visitante) {
       visitante = new Visitante({ correo, nombre, img });
       resp = await visitante.save();
@@ -47,11 +45,11 @@ const crearVisitante = async (req = request, res = response) => {
       const token = jwt.sign(payload, secretOrPrivateKey, { expiresIn: "2h" });
       const msg = `visita número ${visitas}`;
       resp = { msg, token };
+      res.json({ visitante:resp });
     }
   } catch (err) {
     return res.status(500).json({ msg: "ERROR!!! no se pudo crear visitante" });
   }
-  res.json({ resp });
 };
 const verificarToken = async (req = request, res = response) => {
   const { token } = req.body;

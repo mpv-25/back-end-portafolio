@@ -2,45 +2,57 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+const ubicacionShema = Schema({
+  lat: {
+    type: Number,
+    required: true,
+  },
+  lng: {
+    type: Number,
+    required: true,
+  },
+});
+
 const reunionSchema = Schema({
   empresa: {
     type: String,
-    require: [true, "Es obligatorio el parametro empresa"],
+    required: [true, "Es obligatorio el parametro empresa"],
   },
   correo: {
     type: String,
-    require: [true, "Es obligatorio el parametro correo"],
+    required: [true, "Es obligatorio el parametro correo"],
   },
   tipoReunion: {
     type: String,
-    require: [true, "Es obligatorio el parametro tipoReunion"],
+    required: [true, "Es obligatorio el parametro tipoReunion"],
   },
   urlOnline: {
     type: String,
-    require: false,
+    required: false,
     default: "",
   },
   ubicacion: {
-    type: String,
-    require: false,
+    type: ubicacionShema,
+    required: false,
     default: "",
   },
   mensaje: {
     type: String,
-    require: [true, "Es obligatorio el parametro mensaje"],
+    required: [true, "Es obligatorio el parametro mensaje"],
   },
   fecha: {
     type: String,
-    require: [true, "Es obligatorio el parametro fecha"],
+    required: [true, "Es obligatorio el parametro fecha"],
   },
   hora: {
     type: String,
-    require: [true, "Es obligatorio el parametro hora"],
+    required: [true, "Es obligatorio el parametro hora"],
   },
-  terminado:{
-    type:Boolean,
-    default:false
-  }
+  terminado: {
+    type: Boolean,
+    default: false,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Reunion", reunionSchema);

@@ -4,6 +4,7 @@ const { check } = require("express-validator");
 const router = Router();
 
 const validarUsuario = require("../middlewares/validar-usuario");
+const validarArchivos = require("../middlewares/validar-archivos");
 const { validarCampos } = require("../middlewares/validar-campos");
 
 const {
@@ -17,8 +18,8 @@ router.post(
   "/",
   [
     validarUsuario,
+    validarArchivos,
     check("titulo", "El título es obligatorio"),
-    check("img", "El link de la imagen es obligatorio"),
     validarCampos,
   ],
   crearSkill
@@ -30,8 +31,8 @@ router.put(
   "/:id",
   [
     validarUsuario,
+    validarArchivos,
     check("titulo", "El título es obligatorio"),
-    check("img", "EL link de la imagen es obligatorio"),
     validarCampos,
   ],
   editSkill

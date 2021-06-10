@@ -5,27 +5,27 @@ const Schema = mongoose.Schema;
 const proyectoSchema = Schema({
   titulo: {
     type: String,
-    require: [true, "El titulo es obligatorio"],
+    required: [true, "El titulo es obligatorio"],
   },
   desc: {
     type: String,
-    require: [true, "La desc es obligatorio"],
+    required: [true, "La desc es obligatorio"],
   },
-  tecnologias:{
-    type:Array,
-    require:[true, "Las técnologias son obligatorias"]
-  },
+  tecnologias: [{
+    type: Schema.Types.ObjectId,
+    ref: "Skill",
+  }],
   github: {
     type: String,
-    require: [true, "El github es obligatorio"],
+    required: [true, "El github es obligatorio"],
   },
   url: {
     type: String,
-    require: false,
+    required: false,
   },
   img: {
     type: Array,
-    require: false,
+    required: false,
     default: [],
   },
 });
