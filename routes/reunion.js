@@ -6,6 +6,7 @@ const router = Router();
 
 const { validarCampos } = require("../middlewares/validar-campos");
 const validarUsuario = require("../middlewares/validar-usuario");
+const { validarReunion } = require("../middlewares/validar-reunion");
 
 const {
   crearReunion,
@@ -26,6 +27,7 @@ router.post(
     check("fecha", "El campo fecha es obligatorio").notEmpty(),
     check("hora", "El campo hora  es obligatorio").notEmpty(),
     validarCampos,
+    validarReunion,
   ],
   crearReunion
 );

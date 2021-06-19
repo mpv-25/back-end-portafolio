@@ -7,15 +7,6 @@ const visitanteSchema = Schema({
     type: String,
     required: [true, "El correo es obligatorio"],
   },
-  nombre: {
-    type: String,
-    required: [true, "El nombre es obligatorio"],
-  },
-  img: {
-    type: String,
-    default: "no-image",
-    required: false,
-  },
   bloqueado: {
     type: Boolean,
     default: false,
