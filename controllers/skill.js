@@ -21,7 +21,7 @@ const crearSkill = async (req = request, res = response) => {
 
 const getSkills = async (req = request, res = response) => {
   try {
-    let { desde = 0, limite = 10 } = req.body;
+    let { desde = 0, limite = 200 } = req.body;
 
     desde = parseInt(desde);
     limite = parseInt(limite);
