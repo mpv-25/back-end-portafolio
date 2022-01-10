@@ -4,7 +4,7 @@ const Proyecto = require("../models/proyecto");
 
 const getProyectos = async (req = request, res = response) => {
 	try {
-		let { desde = 0, limite = 10 } = req.query;
+		let { desde = 0, limite = 20 } = req.query;
 		desde = parseInt(desde);
 		limite = parseInt(limite);
 

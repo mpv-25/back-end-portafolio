@@ -12,9 +12,12 @@ const {
   crearReunion,
   editReunion,
   getReunion,
+  getFechasOcupado
 } = require("../controllers/reunion");
 
 router.get("/", [validarUsuario], getReunion);
+
+router.get("/fechas-ocupado", getFechasOcupado);
 
 router.post(
   "/",
