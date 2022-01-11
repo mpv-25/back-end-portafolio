@@ -20,7 +20,6 @@ const getFechasOcupado = async (req = request, res = response) => {
 		const fechaHoy = new Date().toLocaleString("es-PY", {
 			timeZone: "America/Asuncion",
 		});
-		console.log("fechaHoy:", fechaHoy);
 		const arregloFechaHoy = fechaHoy.split("/");
 		const dd =
 			arregloFechaHoy[0] < 10 ? "0" + arregloFechaHoy[0] : arregloFechaHoy[0];
@@ -28,7 +27,6 @@ const getFechasOcupado = async (req = request, res = response) => {
 			arregloFechaHoy[1] < 10 ? "0" + arregloFechaHoy[1] : arregloFechaHoy[1];
 
 		const yyyy = arregloFechaHoy[2].split(" ")[0];
-		console.log("dd:", dd, "mm:", mm, "yyyy:", yyyy);
 		const resp = await Reunion.find({
 			fecha: {
 				$gte: new Date(yyyy, 0, 1),
