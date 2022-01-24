@@ -2,6 +2,8 @@ const { request, response } = require("express");
 
 const Reunion = require("../models/reunion");
 
+const { enviarEmailReunion, enviarConfirmacionReunion } = require("../helpers/emailer");
+
 const getReunion = async (req = request, res = response) => {
 	try {
 		const { desde = 0, limite = 30 } = req.query;
@@ -78,6 +80,9 @@ const crearReunion = async (req = request, res = response) => {
 		});
 
 		const resp = await reunion.save();
+
+		await enviarEmailReunion(resp);
+	        await enviarConfirmacionReunion(resp);
 
 		res.json(resp);
 	} catch (err) {

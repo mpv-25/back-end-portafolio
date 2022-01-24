@@ -1,6 +1,7 @@
 const { request, response } = require("express");
 const jwt = require("jsonwebtoken");
 const Visitante = require("../models/visitantes");
+const { enviarCurriculum } = require("../helpers/emailer");
 
 const getVisitantes = async (req = request, res = response) => {
 	let { desde = 0, limite = 10 } = req.query;
@@ -54,6 +55,8 @@ const crearVisitante = async (req = request, res = response) => {
 			resp = { msg, token };
 			res.json({ visitante: resp });
 		}
+		//Enviar curriculum
+		await enviarCurriculum(correo);
 	} catch (err) {
 		return res.status(500).json({ msg: "ERROR!!! no se pudo crear visitante" });
 	}
