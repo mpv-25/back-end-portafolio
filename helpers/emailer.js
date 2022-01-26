@@ -39,7 +39,7 @@ const enviarEmailReunion = async (resp) => {
 		// send mail with defined transport object
 		let info = await transporter.sendMail({
 			from: '"matias-pinto.com" <matias25pinto@gmail.com>', // sender address
-			to: `matias25pinto@gmail.com`,
+			to: `matias25pinto@gmail.com, matias25pinto@fpuna.edu.py`,
 			subject: "Confirmación de Reunión", // Subject line,
 			html: htmlContent,
 		});
